@@ -1,0 +1,50 @@
+<div class="container-fluid justify-content-center">
+  <div class=" m-2">
+    <input
+      class="form-control"
+      type="text"
+      name="cname"
+      [(ngModel)]="cname"
+      (ngModelChange)="search()"
+      placeholder="Search for companies"
+    />
+  </div>
+  <div class="ms-2">
+    <span class=" dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+        Branch
+      </button>
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+        <li><a class="dropdown-item" (click)="selectBranch('all')">ALL</a></li>
+        <li><a class="dropdown-item" (click)="selectBranch('CSE')">CSE</a></li>
+        <li><a class="dropdown-item" (click)="selectBranch('ECE')">ECE</a></li>
+        <li><a class="dropdown-item" (click)="selectBranch('ISE')">ISE</a></li>
+        <li><a class="dropdown-item" (click)="selectBranch('EEE')">EEE</a></li>
+      </ul>
+    </span>
+  </div>
+  <div *ngFor="let item of apidata2" class="card mb-3 mainCompone justify-content-center">
+    <div class="card-header bg-primary text-white">
+      <a >{{ item.drive_name }}</a>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-xl-2 col-sm-12">
+          <img class="logo-image" [src]="item.image_url" />
+        </div>
+        <div class="col-10">
+          <h3>{{ item.drive_name }}</h3>
+          <span>Branch :</span><span  class="card-title"> {{ item.branch }}</span>
+          <p class="card-text">
+            <span>Percentage :</span> {{ item.percetage }}% and above
+          </p>
+          <p class="card-text">
+            <span>Percentage :</span> {{ item.yearOfPassing }}
+          </p>
+          <app-more-info class=""></app-more-info>
+          <a href="#" class="btn btn-warning mt-2">Apply now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
